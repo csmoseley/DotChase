@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Pathfinding Demo</title>
+<script type="text/javascript"
+src="graphics.js">
+</script>
+<script>
+var context;
+var x=100;
+var y=100;
+var dx=5;
+var dy=5;
+var viewportWidth = window.innerWidth;
+var viewportHeight = window.innerHeight;
+preloader();
+
+var canvasWidth = viewportWidth;
+var canvasHeight = viewportHeight;
+
+window.onload = function() {
+
+    var gameBox = document.getElementById("game");
+
+    viewportWidth = window.innerWidth;
+    viewportHeight = window.innerHeight;
+
+    canvasWidth = viewportWidth;
+    canvasHeight = viewportHeight;
+    gameBox.style.position = "fixed";
+    gameBox.setAttribute("width", canvasWidth);
+    gameBox.setAttribute("height", canvasHeight);
+    gameBox.style.top = (viewportHeight - canvasHeight) / 2;
+    gameBox.style.left = (viewportWidth - canvasWidth) / 2;
+	window.context = gameBox.getContext("2d");
+  	setInterval(draw,60);
+	setInterval(findpath,250);
+	setInterval(checkmovement, 100);
+}
+
+window.onresize = function() {
+    var gameBox = document.getElementById("game");
+
+    // For IE
+    viewportWidth = window.innerWidth;
+    viewportHeight = window.innerHeight;
+
+    canvasWidth = viewportWidth;
+    canvasHeight = viewportHeight;
+    gameBox.style.position = "fixed";
+    gameBox.setAttribute("width", canvasWidth);
+    gameBox.setAttribute("height", canvasHeight);
+    gameBox.style.top = (viewportHeight - canvasHeight) / 2;
+    gameBox.style.left = (viewportWidth - canvasWidth) / 2;
+}
+
+
+
+</script>
+
+<body>
+<canvas id="game" style="background: black">
+</canvas>
+</body>
+</html>
